@@ -1,4 +1,61 @@
 * {
-    color: blue;
-    font-size: 50em;
+    box-sizing: border-box;
+    background-color: pink;
+}
+body {
+    height: 100vh;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+header {
+    font-size: 4vmin;
+    color: indigo;
+    letter-spacing: 1vmin;
+    margin-bottom: 2vmin;
+}
+h1 {
+    color: indigo;
+    font-size: 3vmin;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(3, 10vmin);
+    grid-template-rows: repeat(3, 10vmin);
+}
+
+#board > div {
+    border: 0.3vmin solid magenta;
+}
+
+button {
+    margin-top: 4vmin;
+    padding: 2vmin;
+    font-size: 3vmin;
+    border-radius: 4vmin;
+    border: 0.3vmin solid rgb(139, 14, 139);;
+    color: rgb(139, 14, 139);
+}
+
+button:hover {
+    color: pink;
+    background-color: indigo;
+}
+
+button:active {
+    border: 0.3vmin solid rgb(139, 14, 139);;
+    color: rgb(139, 14, 139);
+    background-color: rgb(42, 0, 71);
+}
+
+#b1:hover, #b2:hover, #b3:hover, #b4:hover, #b5:hover, #b6:hover, #b7:hover, #b8:hover, #b0:hover {
+    background-image: radial-gradient(circle, pink, rgba(255, 255, 255, 0), yellow);
+}
+
+#b1:active, #b2:active, #b3:active, #b4:active, #b5:active, #b6:active, #b7:active, #b8:active, #b0:active {
+    background-image: radial-gradient(circle, yellow, pink);
 }
