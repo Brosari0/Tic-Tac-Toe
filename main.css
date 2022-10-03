@@ -1,6 +1,7 @@
 * {
     box-sizing: border-box;
     background-color: pink;
+    font-family: 'Bubblegum Sans', cursive;
 }
 body {
     height: 100vh;
@@ -10,15 +11,16 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 }
 header {
-    font-size: 4vmin;
-    color: indigo;
+    font-size: 7.5vmin;
+    color: rebeccapurple;
     letter-spacing: 1vmin;
     margin-bottom: 2vmin;
 }
 h1 {
-    color: indigo;
+    color: rebeccapurple;
     font-size: 3vmin;
 }
 
@@ -30,6 +32,10 @@ h1 {
 
 #board > div {
     border: 0.3vmin solid magenta;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4em;
 }
 
 button {
@@ -47,7 +53,7 @@ button:hover {
 }
 
 button:active {
-    border: 0.3vmin solid rgb(139, 14, 139);;
+    border: 0.3vmin solid rgb(139, 14, 139);
     color: rgb(139, 14, 139);
     background-color: rgb(42, 0, 71);
 }

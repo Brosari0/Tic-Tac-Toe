@@ -3,8 +3,14 @@
 //   1.1) Define a colors object with keys of 'null' (when the square is empty), and players 1 & -1. The value assigned to each key represents the color to display for an empty square (null), player 1 and player -1.
 const COLORS = {
     null: 'pink',
-    '1': 'purple',
-    '-1': 'green',
+    '1': 'darkorchid',
+    '-1': 'limegreen',
+}
+
+const text = {
+    null: '',
+    '1': 'X',
+    '-1': 'O',
 }
 
 //   1.2) Define the 8 possible winning combinations, each containing three indexes of the board that make a winner if they hold the same player value.
@@ -65,22 +71,22 @@ function renderboard() {
 //         4.2.1.1.2) Use the index of the iteration to access the mapped value from the board array.
     const bEl = document.getElementById(`b${idx}`);
 //         4.3.1.1.3) Set the background color of the current element by using the value as a key on the colors lookup object (constant).
-    bEl.style.backgroundColor = COLORS[bVal];
-
-    bEl.className = !bVal ? 'avail' : '';
+    bEl.style.color = COLORS[bVal];
+        bEl.innerHTML = text[bVal];
+    bEl.classList.remove = !bVal ? 'hover' : '';
 });
 }
 //     4.2.2) Render a message:
 function renderMessage() {
 //       4.2.2.1) If winner has a value other than null (game still in progress), render whose turn it is - use the color name for the player, converting it to upper case.
-    if (winner === null) {
-        messageEl.innerHTML = `<span style="color: ${COLORS[turn]}">${COLORS[turn].toUpperCase()}</span>'s Turn`;
+    if (winner === 'T') {
+        messageEl.innerText = "Cat's Game!"
 //       4.2.2.2) If winner is equal to 'T' (tie), render a tie message.
-    } else if (winner === 'T') {
-        messageEl.innerText = "Cat's Game!";
+    } else if (winner) {
+        messageEl.innerHTML =  `<span style="color: ${COLORS[winner]}">${COLORS[winner].toUpperCase()}</span> Wins!`;
 //       4.2.2.3) Otherwise, render a congratulatory message to which player has won - use the color name for the player, converting it to uppercase.
     } else {
-        messageEl.innerHTML = `<span style="color: ${COLORS[winner]}">${COLORS[winner].toUpperCase()}</span> Wins!`;
+        messageEl.innerHTML = `<span style="color: ${COLORS[turn]}">${COLORS[turn].toUpperCase()}</span>'s Turn`;
     }
 }
 
@@ -88,7 +94,8 @@ function renderMessage() {
 function handlePlace(evt) {
 //   5.1) Obtain the index of the square that was clicked by either:
 //     5.1.1) "Extracting" the index from an id assigned to the element in the HTML, or
-const idx = parseInt(evt.target.id.replace('b', ''));
+// const idx = parseInt(evt.target.id.replace('b', ''));
+const idx = parseInt(evt.target.id[1]);
 //     5.1.2) Looping through the cached square elements using a for loop and breaking out when the current square element equals the event object's target.
 //   5.2) If the board has a value at the index, immediately return because that square is already taken.
         //Guards
@@ -129,7 +136,7 @@ for (let i = 0; i < winnningSets.length; i++) {
 //     5.6.4) If the total equals 3, we have a winner! Set winner to the board's value at the index specified by the first index in the combo array. Exit the loop.
     winner = COLORS[turn];
 //   5.7) If there's no winner, check if there's a tie:
-    if (board.includes(null)) return null;
+    if (board.includes(null)) return;
 //     5.7.1) Set winner to 'T' if there are no more nulls in the board array.
     return'T';
 //   5.8) All state has been updated, so render the state to the page (step 4.2).
